@@ -28,7 +28,6 @@ urlpatterns = [
     path('Contact', views.contact, name='contact'),
     path('sign_in_status', views.index, name='status'),
     path('token_details', views.token_details, name='token_details'),
-    
     path('call_ms_graph', views.call_ms_graph, name='call_ms_graph'),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)), # our pre-configured msal URLs
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})  # for static files
