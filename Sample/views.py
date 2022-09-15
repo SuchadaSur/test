@@ -61,36 +61,36 @@ def contact(request):
     # else:
     #     return redirect('sign_in')
 
-def url_pic(request):
-        ms_identity_web.acquire_token_silently()
-        graph = 'https://graph.microsoft.com/v1.0/me?$select=id,employeeId'        
-        authZ = f'Bearer {ms_identity_web.id_data._access_token}'
-        # print("This is Token ",ms_identity_web.id_data._access_token)
-        result1 = requests.get(graph, headers={'Authorization': authZ}).json()
-        # print(result1['employeeId'])
-        if result1['employeeId'] == None:
-            empid = '00000'
-        else:
-            empid = result1['employeeId'] #15856
-        # empid = '15856'
-        Username = "SKCone"
-        Password = "OneApi2022*"
-        token_url ='https://p701apsi01-la02skc.azurewebsites.net/skcapi/token'
-        body ={
-            "UserName" : Username,
-            "Password" : Password
-        }
-        result2 = requests.post(token_url,json=body).json()
-        # token = result1['accessToken']
-        empid_url = 'https://p701apsi01-la01skc.azurewebsites.net/skcapi/empid/' + empid
-        # print(empid_url)
-        auth = f'Bearer {result2["accessToken"]}'
-        results = requests.get(empid_url, headers={'Authorization': auth}).json()
-        if type(results) == list:
-            pic_url = results[0]['picture_url']
-        else:
-            pic_url = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-        return pic_url
+# def url_pic(request):
+#         ms_identity_web.acquire_token_silently()
+#         graph = 'https://graph.microsoft.com/v1.0/me?$select=id,employeeId'        
+#         authZ = f'Bearer {ms_identity_web.id_data._access_token}'
+#         # print("This is Token ",ms_identity_web.id_data._access_token)
+#         result1 = requests.get(graph, headers={'Authorization': authZ}).json()
+#         # print(result1['employeeId'])
+#         if result1['employeeId'] == None:
+#             empid = '00000'
+#         else:
+#             empid = result1['employeeId'] #15856
+#         # empid = '15856'
+#         Username = "SKCone"
+#         Password = "OneApi2022*"
+#         token_url ='https://p701apsi01-la02skc.azurewebsites.net/skcapi/token'
+#         body ={
+#             "UserName" : Username,
+#             "Password" : Password
+#         }
+#         result2 = requests.post(token_url,json=body).json()
+#         # token = result1['accessToken']
+#         empid_url = 'https://p701apsi01-la01skc.azurewebsites.net/skcapi/empid/' + empid
+#         # print(empid_url)
+#         auth = f'Bearer {result2["accessToken"]}'
+#         results = requests.get(empid_url, headers={'Authorization': auth}).json()
+#         if type(results) == list:
+#             pic_url = results[0]['picture_url']
+#         else:
+#             pic_url = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+#         return pic_url
 
 @ms_identity_web.login_required
 def token_details(request):
