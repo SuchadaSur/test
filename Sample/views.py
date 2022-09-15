@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 ms_identity_web = settings.MS_IDENTITY_WEB
 
 def index(request):
-    if request.identity_context_data.authenticated:
+    # if request.identity_context_data.authenticated:
         # print('Logged in')
         # all_Request = testRequest.objects.all()
         # status_wait= all_Request.filter(docStatus__startswith='w')
@@ -26,9 +26,9 @@ def index(request):
         token_azure_ad = result['access_token']
         # pic_url = url_pic(request)
         return render(request, 'auth/status.html')
-    else:
-        print('index page')
-        return redirect('sign_in')
+    # else:
+    #     print('index page')
+    #     return redirect('sign_in')
 
 @ms_identity_web.login_required
 def token_details(request):
