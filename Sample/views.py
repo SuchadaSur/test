@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 ms_identity_web = settings.MS_IDENTITY_WEB
 
 def index(request):
-    # if request.identity_context_data.authenticated:
+    if request.identity_context_data.authenticated:
 
         # print('Logged in')
         # all_Request = testRequest.objects.all()
@@ -30,9 +30,9 @@ def index(request):
         # pic_url = url_pic(request)
         return render(request, 'auth/inbox.html')
 
-    # else:
-    #     print('index page')
-    #     return redirect('sign_in')
+    else:
+        # print('index page')
+        return redirect('sign_in')
 
 def dashboard(request):
     # if request.identity_context_data.authenticated:
