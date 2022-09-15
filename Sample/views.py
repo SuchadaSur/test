@@ -27,7 +27,7 @@ def index(request):
 
         # print(result['access_token'])
         # token_azure_ad = result['access_token']
-        pic_url = url_pic(request)
+        # pic_url = url_pic(request)
         return render(request, 'auth/inbox.html',{'pic_url' : pic_url})
 
     # else:
