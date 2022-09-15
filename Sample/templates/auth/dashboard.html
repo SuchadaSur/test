@@ -1,0 +1,104 @@
+{% extends '../folder_layout/layout.html' %}
+{% load static %}
+
+{% block banner_text %}
+    {% block title %}
+        Dashboard
+    {% endblock %}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static '/css/style_chart.css' %}">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link rel="stylesheet" href="{% static '/css/table.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" 
+    integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="{% static '/java_scripts/chart1.js' %}"></script> 
+{% endblock %}
+
+{% block body %}
+<!-- <ul class="sidebar" id="sidebar">
+    <li id="test" class="sidebar_menu"><a href="{% url 'index' %}" class="btn"><img src='/static/image/layout_img/envelope.png' alt="Inbox"
+                class="sidebar-logo"><span>Inbox</span></a></li>
+    <li class="sidebar_menu"><a href="{% url 'dashboard' %}" class="btn active"><img src='/static/image/layout_img/chart-histogram.png' alt="Dashboard"
+                class="sidebar-logo"><span>Dashboard</span></a></li>
+    <li class="sidebar_menu"><a href="{% url 'history' %}" class="btn"><img src="/static/image/layout_img/book-alt.png" alt="History"
+                class="sidebar-logo"><span>History</span></a></li>
+        <li class="sidebar_menu"><a href="{% url 'contact' %}" class="btn"><img src="/static/image/layout_img/address-book.png" alt="ContactList"
+                    class="sidebar-logo"><span>ContactList</span></a></li>
+</ul> -->
+<!-- Side bar End -->
+<div class="main1" id="div_register">
+    <div class="maincontent">
+        <!-- <div class="main_head">
+            <span style="font-size: 200%; margin-left: 22px;">My Dashboard</span><br>
+        </div> -->
+    <!-- <hr> -->
+        <div class="radio-toolbar">
+            <input type="radio" id="radio1" onclick="testt()" name="radios" value="all" checked>
+            <label for="radio1">Today</label>
+
+            <input type="radio" id="radio2" onclick="testt(status='weekly')" name="radios" value="false">
+            <label for="radio2">Weekly</label>
+
+            <input type="radio" id="radio3" onclick="testt(status='monthly')" name="radios" value="true">
+            <label for="radio3">Monthly</label>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <div class="card-content">
+                    <div class="number4" id="waitrequest">0</div>
+                    <div class="card-name4">Wait Approve</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="number1" id="allrequest">0</div>
+
+                    <div class="card-name1">All Request</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="number2" id="approvedrequest">0</div>
+                    <div class="card-name2">Approved</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="number3" id="rejectrequest">0</div>
+                    <div class="card-name3">Reject</div>
+                </div>
+            </div>
+        </div>
+        <div class="charts">
+            <div class="chart">
+                <h2>Number of Approval and Rejection of each systems</h2>
+                <div class="bar_style">
+                    <canvas id="bar"></canvas>
+                </div>
+            </div>
+            <div class="chart doughnut-chart">
+                <h2>Request for each Systems</h2>
+                <div class="doughnut_style">
+                    <canvas id="doughnut"></canvas>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script src={% static "/java_scripts/chart1.js" %}></script> 
+<script src={% static "/java_scripts/chart2.js" %}></script>  -->
+<!-- <script>buildList_1();</script> -->
+<!-- <script>buildList_2();</script> -->
+<script>
+testt()
+var btnContainer = document.getElementById("sidebar");
+var btns = btnContainer.getElementsByClassName("btn");
+btns[1].classList.add("active");
+</script>
+{% endblock %}
