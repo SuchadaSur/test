@@ -1,0 +1,104 @@
+{% extends '../folder_layout/layout.html' %}
+{% load static %}
+
+{% block banner_text %}
+    {% block title %}
+        Inbox
+    {% endblock %}
+{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static '/css/table.css' %}" rel="stylesheet" media="screen" /> 
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bulma.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+<!-- <ul class="sidebar" id="sidebar">
+    <li id="test" class="sidebar_menu"><a href="{% url 'index' %}" class="btn active"><img src="/static/image/layout_img/envelope.png" alt="Inbox"
+          class="sidebar-logo"><span>Inbox</span></a></li>
+    <li class="sidebar_menu"><a href="{% url 'dashboard' %}" class="btn"><img src="/static/image/layout_img/chart-histogram.png" alt="Dashboard"
+          class="sidebar-logo"><span>Dashboard</span></a></li>
+    <li class="sidebar_menu"><a href="{% url 'history' %}" class="btn"><img src="/static/image/layout_img/book-alt.png" alt="History"
+          class="sidebar-logo"><span>History</span></a></li>
+    <li class="sidebar_menu"><a href="{% url 'contact' %}" class="btn"><img src="/static/image/layout_img/address-book.png" alt="ContactList"
+            class="sidebar-logo"><span>ContactList</span></a></li>
+</ul> -->
+<div class="main" id="div_register">
+<div class="maincontent">
+    <div class="main_head">
+   <span style="font-size:200%; margin-left: 22px;">Document</span><br>
+     </div>
+  <hr>
+   <div class="tablecontent" id="tablecontent">
+    <!-- <table id="example" class="table table-striped table-bordered"> -->
+    <table id="example" class="table table-hover table-bordered nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th style="width: 5%;" class="no-sort">Detail URL</th>
+                <!-- <th>Document Number</th> -->
+                <th style="width: 20%;" class="no-sort">Title</th>
+                <th style="width: 10%;">Department</th>
+                <th style="width: 10%;">Requester</th>
+                <th style="width: 10%;">Request Date</th>
+                <!-- <th style="width: 7.5%;">Last Update</th> -->
+                <th style="width: 15%;">System</th>
+                <!-- <th style="width: 10%;" class="no-sort">Document Status</th> -->
+                <th style="width: 5%;" class="no-sort">Attachment</th>
+                <!-- <th>Approver</th> -->
+                <th style="width: 15%;" class="no-sort"></th>
+            </tr>
+        </thead>
+    </table>
+          <!-- <tbody>
+            {% for testRequest in all_Request %}
+            <tr>
+              <td><a href= {{ testRequest.detailUrl }} target="_blank"><img src="/static/image/file.png" style="width: 50px; height: 50px;"></a></td>
+              <td>{{ testRequest.docNumber }}</td>  
+              <td>{{ testRequest.title }}</td> 
+              <td>{{ testRequest.department }}</td>
+              <td>{{ testRequest.requester }}</td>
+              <td>{{ testRequest.requestDate }}</td>
+              <td>{{ testRequest.lastUpdate }}</td>
+              <td>{{ testRequest.system }}</td>
+              <td>{{ testRequest.docStatus }}</td> 
+              {%if testRequest.attachment == True %}:
+                <td>✔</td>
+              {% else %}:
+              <td>-</td>
+                {%endif%}
+              <td>{{ testRequest.approver }}</td>
+            </tr>
+            {% endfor %}
+        </tbody> -->
+    <!-- </table> -->
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="{% static '/java_scripts/createdatatableStatus_java.js' %}"></script>
+<script>
+    // $( window ).load(function() {buildList() });
+    buildList();
+    (() => {
+            if (window.localStorage) {
+  
+                // If there is no item as 'reload'
+                // in localstorage then create one &
+                // reload the page
+                if (!localStorage.getItem('reload')) {
+                    localStorage['reload'] = true;
+                    window.location.reload();
+                } else {
+  
+                    // If there exists a 'reload' item
+                    // then clear the 'reload' item in
+                    // local storage
+                    localStorage.removeItem('reload');
+                }
+            }
+        })(); // Calling anonymous function here only
+        var btnContainer = document.getElementById("sidebar");
+        var btns = btnContainer.getElementsByClassName("btn");
+        btns[0].classList.add("active");
+</script>
+{% endblock %}

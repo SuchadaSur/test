@@ -1,0 +1,13 @@
+.card{
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgb(0 0 0 / 8%);
+}
+
+.card-img-top img {
+    border-radius: 10px 10px 0 0;
+}
+
+.card-img-top{
+    height: 100px;
+    border-radius: 10px 10px 0 0;
+}
