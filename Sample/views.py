@@ -28,7 +28,7 @@ def index(request):
         # print(result['access_token'])
         # token_azure_ad = result['access_token']
         # pic_url = url_pic(request)
-        return render(request, 'auth/status.html')
+        return render(request, 'auth/inbox.html')
 
     # else:
     #     print('index page')
