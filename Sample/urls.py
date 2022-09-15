@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include, re_path
 from django.views.static import serve
+from django.contrib import admin
 from . import views
 from django.conf import settings
 from ms_identity_web.django.msal_views_and_urls import MsalViews
@@ -22,6 +23,7 @@ from ms_identity_web.django.msal_views_and_urls import MsalViews
 msal_urls = MsalViews(settings.MS_IDENTITY_WEB).url_patterns()
 
 urlpatterns = [
+    path('admin/', admin.site.urls), 
     path('', views.index, name='index'),
     path('Dashboard', views.dashboard, name='dashboard'),
     path('History', views.history, name='history'),
