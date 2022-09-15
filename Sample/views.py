@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.conf import settings
 import requests
-
+from django.shortcuts import redirect
 ms_identity_web = settings.MS_IDENTITY_WEB
 
 def index(request):
-    # if request.identity_context_data.authenticated:
+    if request.identity_context_data.authenticated:
         # print('Logged in')
         # all_Request = testRequest.objects.all()
         # status_wait= all_Request.filter(docStatus__startswith='w')
@@ -26,33 +26,33 @@ def index(request):
         token_azure_ad = result['access_token']
         # pic_url = url_pic(request)
         return render(request, 'auth/status.html')
-    # else:
-    #     print('index page')
-    #     return redirect('sign_in')
+    else:
+        print('index page')
+        return redirect('sign_in')
 
 def dashboard(request):
-    # if request.identity_context_data.authenticated:
+    if request.identity_context_data.authenticated:
         # pic_url = url_pic(request)
         return render(request, 'auth/dashboard.html')
-    # else:
-    #     return redirect('sign_in')
+    else:
+        return redirect('sign_in')
 
 def history(request):
-    # if request.identity_context_data.authenticated:
+    if request.identity_context_data.authenticated:
     #     all_Request = testRequest.objects.all()
     #     status_test= all_Request.filter(docStatus__startswith='a' ) | all_Request.filter(docStatus__startswith='r' )
     #     pic_url = url_pic(request)
         return render(request, 'auth/history.html')
-    # else:
-    #     print('index page')
-    #     return redirect('sign_in')
+    else:
+        print('index page')
+        return redirect('sign_in')
 
 def contact(request):
-    # if request.identity_context_data.authenticated:
-    #     pic_url = url_pic(request)
+    if request.identity_context_data.authenticated:
+        pic_url = url_pic(request)
         return render(request, 'auth/contact.html')
-    # else:
-    #     return redirect('sign_in')
+    else:
+        return redirect('sign_in')
 
 # @ms_identity_web.login_required
 # def token_details(request):
