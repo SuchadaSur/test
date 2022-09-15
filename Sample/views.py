@@ -30,6 +30,13 @@ def index(request):
     #     print('index page')
     #     return redirect('sign_in')
 
+def dashboard(request):
+    # if request.identity_context_data.authenticated:
+        # pic_url = url_pic(request)
+        return render(request, 'auth/dashboard.html')
+    # else:
+    #     return redirect('sign_in')
+
 @ms_identity_web.login_required
 def token_details(request):
     return render(request, 'auth/token.html')
