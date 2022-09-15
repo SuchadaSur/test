@@ -23,6 +23,8 @@ msal_urls = MsalViews(settings.MS_IDENTITY_WEB).url_patterns()
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('Dashboard', views.dashboard, name='dashboard'),
+    path('History', views.history, name='history'),
     path('sign_in_status', views.index, name='status'),
     path('token_details', views.token_details, name='token_details'),
     

@@ -37,6 +37,16 @@ def dashboard(request):
     # else:
     #     return redirect('sign_in')
 
+def history(request):
+    # if request.identity_context_data.authenticated:
+    #     all_Request = testRequest.objects.all()
+    #     status_test= all_Request.filter(docStatus__startswith='a' ) | all_Request.filter(docStatus__startswith='r' )
+    #     pic_url = url_pic(request)
+        return render(request, 'auth/history.html')
+    # else:
+    #     print('index page')
+    #     return redirect('sign_in')
+
 @ms_identity_web.login_required
 def token_details(request):
     return render(request, 'auth/token.html')
