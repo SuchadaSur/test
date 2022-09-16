@@ -24,11 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'lk;akjdflkjsklfdjdaskl;fjdfalskdj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost','d701apsi01-la03skc.azurewebsites.net','skcone.siamkubota.co.th']
 
-
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000
 # Application definition
 
 INSTALLED_APPS = [
