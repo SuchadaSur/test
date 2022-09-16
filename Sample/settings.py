@@ -26,7 +26,7 @@ SECRET_KEY = 'lk;akjdflkjsklfdjdaskl;fjdfalskdj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','d701apsi01-la03skc.azurewebsites.net']
+ALLOWED_HOSTS = ['localhost','d701apsi01-la03skc.azurewebsites.net','skcone.siamkubota.co.th']
 
 
 # Application definition
