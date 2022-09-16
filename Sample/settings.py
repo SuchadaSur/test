@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'lk;akjdflkjsklfdjdaskl;fjdfalskdj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','d701apsi01-la03skc.azurewebsites.net','skcone.siamkubota.co.th']
 
