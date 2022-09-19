@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','d701apsi01-la03skc.azurewebsites.net','skcone.siamkubota.co.th']
 
-WERKZEUG_DEBUG_PIN = False
+# WERKZEUG_DEBUG_PIN = False
 
 # Application definition
 
