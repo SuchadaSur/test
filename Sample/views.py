@@ -40,7 +40,7 @@ def index(request):
 def dashboard(request):
     if request.identity_context_data.authenticated:
 
-        pic_url = url_pic(request)
+        pic_url,data = url_pic(request,"All")
         return render(request, 'auth/dashboard.html',{'pic_url' : pic_url})
 
     else:
@@ -51,7 +51,7 @@ def history(request):
 
     #     all_Request = testRequest.objects.all()
     #     status_test= all_Request.filter(docStatus__startswith='a' ) | all_Request.filter(docStatus__startswith='r' )
-        pic_url = url_pic(request)
+        pic_url,data = url_pic(request,"All")
         return render(request, 'auth/history.html',{'pic_url' : pic_url})
     else:
         # print('index page')
@@ -59,7 +59,7 @@ def history(request):
 
 def contact(request):
     if request.identity_context_data.authenticated:
-        pic_url = url_pic(request)
+        pic_url,data = url_pic(request,"All")
         return render(request, 'auth/contact.html',{'pic_url' : pic_url})
     else:
         return redirect('sign_in')
