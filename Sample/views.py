@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 from django.shortcuts import redirect
+import json
+
 ms_identity_web = settings.MS_IDENTITY_WEB
 
 def index(request):
@@ -27,8 +29,9 @@ def index(request):
 
         # print(result['access_token'])
         # token_azure_ad = result['access_token']
-        pic_url = url_pic(request)
-        return render(request, 'auth/inbox.html', {'pic_url' : pic_url})
+        pic_url,data = url_pic(request,"All")
+        # data = data_request("All")
+        return render(request, 'auth/inbox.html', {'pic_url' : pic_url,'all_data' : data})
 
     else:
         # print('index page')
@@ -61,18 +64,51 @@ def contact(request):
     else:
         return redirect('sign_in')
 
-def url_pic(request):
+def url_pic(request,status):
         ms_identity_web.acquire_token_silently()
         graph = 'https://graph.microsoft.com/v1.0/me?$select=id,employeeId'        
         authZ = f'Bearer {ms_identity_web.id_data._access_token}'
-        # print("This is Token ",ms_identity_web.id_data._access_token)
+        # print(authZ)
         result1 = requests.get(graph, headers={'Authorization': authZ}).json()
-        # print(result1['employeeId'])
+        # print(type(result_api))
+        mydas_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEseries"
+        hed = {'Authorization': authZ , 'Content-Type': 'application/json'}
+        payload = json.dumps({
+        "department": "DY34000000",
+        "requesterCode": "",
+        "requesterDate": "",
+        "lastUpdate": "",
+        "system": "",
+        "docStatus": "",
+        "attachment": "",
+        "approverCode": "", #result1['employeeId']
+        "pageSize": 20,
+        "pageIndex": 0
+        })
+        result_api = requests.post(mydas_api, headers=hed,data=payload).json()
+        for i in result_api["data"]:
+            # print(i["requestDate"])
+            i["requestDate"] = changedatetime(i["requestDate"])
+            # print(i["requestDate"])
+        data_use = []
+        if status.startswith("All"):
+            for i in result_api["data"]:
+                data_use.append(i)
+                # print(i)
+        elif status.startswith("Complete"):
+            for i in result_api["data"]:
+                if i["docStatus"] == "Complete":
+                    data_use.append(i)
+        elif status.startswith("Cancel"):
+            for i in result_api["data"]:
+                if i["docStatus"] == "Cancel":
+                    data_use.append(i)
+    
         if result1['employeeId'] == None:
             empid = '00000'
         else:
             empid = result1['employeeId'] #15856
-        # empid = '15856'
+
         Username = "SKCone"
         Password = "OneApi2022*"
         token_url ='https://p701apsi01-la02skc.azurewebsites.net/skcapi/token'
@@ -90,7 +126,51 @@ def url_pic(request):
             pic_url = results[0]['picture_url']
         else:
             pic_url = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-        return pic_url
+        return pic_url,data_use
+
+# def data_request(status):
+#     ms_identity_web.acquire_token_silently()
+#     authZ = f'Bearer {ms_identity_web.id_data._access_token}'
+#     mydas_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEseries"
+#     hed = {'Authorization': authZ , 'Content-Type': 'application/json'}
+#     payload = json.dumps({
+#     "department": "DY34000000",
+#     "requesterCode": "",
+#     "requesterDate": "",
+#     "lastUpdate": "",
+#     "system": "",
+#     "docStatus": "",
+#     "attachment": "",
+#     "approverCode": "", #result1['employeeId']
+#     "pageSize": 20,
+#     "pageIndex": 0
+#     })
+#     result_api = requests.post(mydas_api, headers=hed,data=payload).json()
+#     data_use = []
+#     if status.startswith("All"):
+#         for i in result_api["data"]:
+#             data_use.append(i)
+#             # print(i)
+#     elif status.startswith("Complete"):
+#         for i in result_api["data"]:
+#             if i["docStatus"] == "Complete":
+#                 data_use.append(i)
+#     elif status.startswith("Cancel"):
+#         for i in result_api["data"]:
+#             if i["docStatus"] == "Cancel":
+#                 data_use.append(i)
+#     # print(len(data_use))
+#     # print(data_use)
+#     return data_use
+
+def changedatetime(datetime):
+    # datetime = "2019-10-15T00:00:00"
+    y_m_d = datetime.split("T")[0]
+    y = y_m_d.split("-")[0]
+    m = y_m_d.split("-")[1]
+    d = y_m_d.split("-")[2]
+    date = d +"/"+ m + "/" + y
+    return date
 
 @ms_identity_web.login_required
 def token_details(request):

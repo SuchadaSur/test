@@ -46,59 +46,63 @@
                 <!-- <th style="width: 10%;" class="no-sort">Document Status</th> -->
                 <th style="width: 5%;" class="no-sort">Attachment</th>
                 <!-- <th>Approver</th> -->
-                <th style="width: 15%;" class="no-sort"></th>
+                <!-- <th style="width: 15%;" class="no-sort"></th> -->
             </tr>
         </thead>
-    </table>
-          <!-- <tbody>
-            {% for testRequest in all_Request %}
+    <!-- </table> -->
+        <tbody>
+        {% for data in all_data %}
             <tr>
-              <td><a href= {{ testRequest.detailUrl }} target="_blank"><img src="/static/image/file.png" style="width: 50px; height: 50px;"></a></td>
-              <td>{{ testRequest.docNumber }}</td>  
-              <td>{{ testRequest.title }}</td> 
-              <td>{{ testRequest.department }}</td>
-              <td>{{ testRequest.requester }}</td>
-              <td>{{ testRequest.requestDate }}</td>
-              <td>{{ testRequest.lastUpdate }}</td>
-              <td>{{ testRequest.system }}</td>
-              <td>{{ testRequest.docStatus }}</td> 
-              {%if testRequest.attachment == True %}:
+              <td><a href= {{ data.detailUrl }} target="_blank"><img src="/static/image/file.png" style="width: 50px; height: 50px;"></a></td>
+              <!-- <td>{{ data.docNumber }}</td>   -->
+              <td>{{ data.title }}</td> 
+              <td>{{ data.department }}</td>
+              <td>{{ data.requesterCode }}</td>
+              <td>{{ data.requestDate }}</td>
+              <!-- <td>{{ data.lastUpdate }}</td> -->
+              <td>{{ data.system }}</td>
+              <!-- <td>{{ data.docStatus }}</td>  -->
+              {%if data.attachment == True %}:
                 <td>✔</td>
               {% else %}:
-              <td>-</td>
+                <td>-</td>
                 {%endif%}
-              <td>{{ testRequest.approver }}</td>
+              <!-- <td>{{ data.approverCode }}</td> -->
             </tr>
             {% endfor %}
-        </tbody> -->
-    <!-- </table> -->
+        </tbody>
+    </table>
     </div>
 </div>
 </div>
-<script type="text/javascript" src="{% static '/java_scripts/createdatatableStatus_java.js' %}"></script>
+<!-- <script type="text/javascript" src="{% static '/java_scripts/createdatatableStatus_java.js' %}"></script> -->
 <script>
     // $( window ).load(function() {buildList() });
-    buildList();
-    (() => {
-            if (window.localStorage) {
+    // buildList();
+    // (() => {
+    //         if (window.localStorage) {
   
-                // If there is no item as 'reload'
-                // in localstorage then create one &
-                // reload the page
-                if (!localStorage.getItem('reload')) {
-                    localStorage['reload'] = true;
-                    window.location.reload();
-                } else {
+    //             // If there is no item as 'reload'
+    //             // in localstorage then create one &
+    //             // reload the page
+    //             if (!localStorage.getItem('reload')) {
+    //                 localStorage['reload'] = true;
+    //                 window.location.reload();
+    //             } else {
   
-                    // If there exists a 'reload' item
-                    // then clear the 'reload' item in
-                    // local storage
-                    localStorage.removeItem('reload');
-                }
-            }
-        })(); // Calling anonymous function here only
+    //                 // If there exists a 'reload' item
+    //                 // then clear the 'reload' item in
+    //                 // local storage
+    //                 localStorage.removeItem('reload');
+    //             }
+    //         }
+    //     })(); // Calling anonymous function here only
         var btnContainer = document.getElementById("sidebar");
         var btns = btnContainer.getElementsByClassName("btn");
         btns[0].classList.add("active");
+        
+        // var data = "{{ all_data|safe}}"
+
+        // console.log(data[0]);
 </script>
 {% endblock %}

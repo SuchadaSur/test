@@ -116,32 +116,31 @@ body {
 .try_head p{
   margin: 7px;
 }
-.picture_header1{
+.picture_header{
   margin:3px 7px;
-  filter: invert(100%);
+  /* filter: invert(100%) !important; */
 }
-.picture_header2{
+.signout-logo{
+  filter: invert(100%) !important;
+}
+/* .picture_header2{
   margin: 3px 7px;
 }
 .picture_header3{
   margin: 3px 3px;
-}
+} */
 /* .picture_header:hover{
   background-color: #f1f1f1;
 } */
 .picture_header img {
-  margin: 3px 7px;
+  margin: 2px 7px;
 }
 .picture_header span {
   font-weight: bold;
 }
 .picture-profile {
-  border-radius: 50%;
+  border-radius: 60%;
   background-color: #aaa;
-}
-.hamburger_logo {
-  margin-left: 5px;
-  margin-right: 20px;
 }
 .mainBody {
   height: calc(100vh - 70px);
@@ -337,7 +336,7 @@ div.row{
   .menu-icons{
     margin-right: 0px;
   }
-  .menu-icons .picture_header{
+  .menu-icons .picture_header1{
     display:none;
   }
   .menu-icons .display-this{
