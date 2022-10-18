@@ -1,0 +1,65 @@
+# my_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEXP"
+        hed = {'Authorization': authZ , 'Content-Type': 'application/json'}
+        payload = json.dumps({
+        "department": "DY34000000",
+        "requesterCode": "",
+        "requesterDate": "",
+        "lastUpdate": "",
+        "system": "",
+        "docStatus": "",
+        "attachment": "",
+        "approverCode": "", #result1['employeeId']
+        "pageSize": 20,
+        "pageIndex": 0
+        })
+        result_api = requests.post(my_api, headers=hed,data=payload).json()
+        for i in result_api["data"]:
+            # print(i["requestDate"])
+            i["requestDate"] = changedatetime(i["requestDate"])
+            # print(i["requestDate"])
+        data_use = []
+        if status.startswith("All"):
+            for i in result_api["data"]:
+                data_use.append(i)
+                # print(i)
+        elif status.startswith("Complete"):
+            for i in result_api["data"]:
+                if i["docStatus"] == "Complete":
+                    data_use.append(i)
+        elif status.startswith("Cancel"):
+            for i in result_api["data"]:
+                if i["docStatus"] == "Cancel":
+                    data_use.append(i)
+        elif status.startswith("Wait") :
+            for i in result_api["data"]:
+                if i["docStatus"] == "WaitForApprove":
+                    data_use.append(i)
+        elif status.startswith("A_C") :
+            for i in result_api["data"]:
+                if i["docStatus"] != "WaitForApprove":
+                    data_use.append(i)
+    
+        if result1['employeeId'] == None:
+            empid = '00000'
+        else:
+            empid = result1['employeeId'] #15856
+            
+            
+        Username = "SKCone"
+        Password = "OneApi2022*"
+        token_url ='https://p701apsi01-la02skc.azurewebsites.net/skcapi/token'
+        body ={
+            "UserName" : Username,
+            "Password" : Password
+        }
+        result2 = requests.post(token_url,json=body).json()
+        # token = result1['accessToken']
+        empid_url = 'https://p701apsi01-la01skc.azurewebsites.net/skcapi/empid/' + empid
+        # print(empid_url)
+        auth = f'Bearer {result2["accessToken"]}'
+        results = requests.get(empid_url, headers={'Authorization': auth}).json()
+        if type(results) == list:
+            pic_url = results[0]['picture_url']
+        else:
+            pic_url = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+        return pic_url,data_use

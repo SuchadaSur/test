@@ -16,9 +16,12 @@ Including another URLconf
 from django.urls import path, include, re_path
 from django.views.static import serve
 from django.contrib import admin
-from . import views
+from Skcone import views
 from django.conf import settings
 from ms_identity_web.django.msal_views_and_urls import MsalViews
+from django.utils.translation import gettext_lazy as _
+from django.conf.urls.i18n import i18n_patterns
+
 
 msal_urls = MsalViews(settings.MS_IDENTITY_WEB).url_patterns()
 
@@ -28,9 +31,21 @@ urlpatterns = [
     path('Dashboard', views.dashboard, name='dashboard'),
     path('History', views.history, name='history'),
     path('Contact', views.contact, name='contact'),
+    
+    
     path('sign_in_status', views.index, name='status'),
     path('token_details', views.token_details, name='token_details'),
     path('call_ms_graph', views.call_ms_graph, name='call_ms_graph'),
     path(f'{settings.AAD_CONFIG.django.auth_endpoints.prefix}/', include(msal_urls)), # our pre-configured msal URLs
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})  # for static files
 ]
+
+urlpatterns += i18n_patterns(
+    path('i18n/', include('django.conf.urls.i18n')),
+    #re_path('', include('Sample.urls')),
+)
+
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        re_path(r'^rosetta/', include('rosetta.urls'))
+    ]

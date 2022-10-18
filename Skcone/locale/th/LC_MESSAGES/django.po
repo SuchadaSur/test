@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-29 14:03+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\Sample\settings.py:130
+msgid "English"
+msgstr ""
+
+#: .\Sample\settings.py:131
+msgid "Thai"
+msgstr ""
+
+#: .\Sample\templates\Sidebar.html:4
+msgid "Inbox"
+msgstr "หน้าแรก"
+
+#: .\Sample\templates\Sidebar.html:6
+msgid "Dashboard"
+msgstr "สถิติ"
+
+#: .\Sample\templates\Sidebar.html:8 .\Sample\templates\auth\history.html:20
+msgid "History"
+msgstr "ประวัติ"
+
+#: .\Sample\templates\Sidebar.html:10 .\Sample\templates\auth\contact.html:31
+msgid "ContactList"
+msgstr "ช่องทางการติดต่อ"
+
+#: .\Sample\templates\auth\contact.html:7
+msgid "Contact - SKCONE"
+msgstr "ช่องทางการติดต่อ - SKCONE"
+
+#: .\Sample\templates\auth\contact.html:37
+#: .\Sample\templates\auth\contact.html:49
+#: .\Sample\templates\auth\contact.html:61
+#: .\Sample\templates\auth\contact.html:73
+msgid "Go to Website"
+msgstr "ไปยังหน้าเว็บไซต์"
+
+#: .\Sample\templates\auth\contact.html:42
+#: .\Sample\templates\auth\contact.html:54
+#: .\Sample\templates\auth\contact.html:66
+#: .\Sample\templates\auth\contact.html:78
+msgid "myDAS"
+msgstr ""
+
+#: .\Sample\templates\auth\contact.html:43
+#: .\Sample\templates\auth\contact.html:55
+#: .\Sample\templates\auth\contact.html:67
+#: .\Sample\templates\auth\contact.html:79
+msgid ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. A enim distinctio "
+"commodi accusamus velit vero rerum doloremque dolores deserunt sit fugiat "
+"nulla illum maiores facere, labore aliquid quidem aut omnis."
+msgstr "รอข้อมูลจริง"
+
+#: .\Sample\templates\auth\dashboard.html:7
+msgid "Dashboard - SKCONE"
+msgstr "สถิติ - SKCONE"
+
+#: .\Sample\templates\auth\dashboard.html:33
+msgid "Today"
+msgstr "วันนี้"
+
+#: .\Sample\templates\auth\dashboard.html:36
+msgid "Weekly"
+msgstr "สัปดาห์"
+
+#: .\Sample\templates\auth\dashboard.html:39
+msgid "Monthly"
+msgstr "เดือน"
+
+#: .\Sample\templates\auth\dashboard.html:45
+msgid "Wait Approve"
+msgstr "รอการอนุมัติ"
+
+#: .\Sample\templates\auth\dashboard.html:52
+msgid "All Request"
+msgstr "ใบคำร้องทั้งหมด"
+
+#: .\Sample\templates\auth\dashboard.html:58
+msgid "Approved"
+msgstr "อนุมัติแล้ว"
+
+#: .\Sample\templates\auth\dashboard.html:64
+msgid "Reject"
+msgstr "ปฏิเสธการอนุมัติ"
+
+#: .\Sample\templates\auth\dashboard.html:70
+msgid "Number of Approval and Rejection of each systems"
+msgstr "จำนวนของเอกสารที่ผ่านการอนุมัติและปฏิเสธการอนุมัติของแต่ละระบบ"
+
+#: .\Sample\templates\auth\dashboard.html:76
+msgid "Request for each Systems"
+msgstr "ใบคำร้องของแต่ละระบบ"
+
+#: .\Sample\templates\auth\history.html:7
+msgid "History - SKCONE"
+msgstr "ประวัติ - SKCONE"
+
+#: .\Sample\templates\auth\history.html:29
+#: .\Sample\templates\auth\inbox.html:31
+msgid "Title"
+msgstr "หัวข้อ"
+
+#: .\Sample\templates\auth\history.html:30
+#: .\Sample\templates\auth\inbox.html:36
+msgid "System"
+msgstr "ระบบ"
+
+#: .\Sample\templates\auth\history.html:31
+msgid "Status"
+msgstr "สถานะใบคำร้อง"
+
+#: .\Sample\templates\auth\history.html:32
+#: .\Sample\templates\auth\inbox.html:32
+msgid "Department"
+msgstr "ส่วน"
+
+#: .\Sample\templates\auth\history.html:33
+#: .\Sample\templates\auth\inbox.html:33
+msgid "Requester"
+msgstr "ผู้ยื่นใบคำร้อง"
+
+#: .\Sample\templates\auth\history.html:34
+#: .\Sample\templates\auth\inbox.html:34
+msgid "Request Date"
+msgstr "วันที่ยื่นใบคำร้อง"
+
+#: .\Sample\templates\auth\history.html:35
+msgid "Last Update"
+msgstr "วันที่แก้ไขล่าสุด"
+
+#: .\Sample\templates\auth\history.html:36
+#: .\Sample\templates\auth\inbox.html:38
+msgid "Attachment"
+msgstr "เอกสารแนบ"
+
+#: .\Sample\templates\auth\inbox.html:7
+msgid "Inbox - SKCONE"
+msgstr "กล่องข้อความ - SKCONE"
+
+#: .\Sample\templates\auth\inbox.html:21
+msgid "Document"
+msgstr "ใบคำร้อง"
+
+#: .\Sample\templates\auth\inbox.html:29
+msgid "Detail URL"
+msgstr "ลิงก์เอกสาร "
+
+#: .\Sample\templates\header.html:45
+msgid "Language"
+msgstr "ภาษาไทย"
+
+#: .\Sample\templates\header.html:111
+msgid "Are you leaving !!!"
+msgstr "คุณต้องการออกจากระบบหรือไม่"
+
+#: .\Sample\templates\header.html:115
+msgid "Select 'Yes' below if you are ready to end your current session."
+msgstr "โปรดเลือก 'ใช่' ในช่องด้านล่างหากคุณต้องการที่จะออกจากระบบ"
+
+#: .\Sample\templates\header.html:118
+msgid "No"
+msgstr "ไม่ใช่"
+
+#: .\Sample\templates\header.html:119
+msgid "Yes"
+msgstr "ใช่"
+
+#~ msgid "Select "
+#~ msgstr "เลือก"
+
+#, fuzzy
+#~| msgid "Document"
+#~ msgid "Document Status"
+#~ msgstr "ใบคำร้อง"

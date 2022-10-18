@@ -1,9 +1,10 @@
 {% extends '../layout.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block banner_text %}
     {% block title %}
-      History - SKCONE
+      {% trans "History - SKCONE" %}
     {% endblock %}
 {% endblock %}
 
@@ -12,20 +13,11 @@
 {% endblock %}
 
 {% block body %}
-<!-- <ul class="sidebar" id="sidebar">
-    <li id="test" class="sidebar_menu"><a href="{% url 'index' %}" class="btn"><img src="/static/image/layout_img/envelope.png" alt="Inbox"
-          class="sidebar-logo"><span>Inbox</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'dashboard' %}" class="btn"><img src="/static/image/layout_img/chart-histogram.png" alt="Dashboard"
-          class="sidebar-logo"><span>Dashboard</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'history' %}" class="btn active"><img src="/static/image/layout_img/book-alt.png" alt="History"
-          class="sidebar-logo"><span>History</span></a></li>
-      <li class="sidebar_menu"><a href="{% url 'contact' %}" class="btn"><img src="/static/image/layout_img/address-book.png" alt="ContactList"
-            class="sidebar-logo"><span>ContactList</span></a></li>
-</ul> -->
+
 <div class="main" id="div_register">
 <div class="maincontent">
     <div class="main_head">
-   <span style="font-size:250%;margin-left:22px;">History</span><br>
+   <span style="font-size:250%;margin-left:22px;">{% trans "History" %}</span><br>
      </div>
   <hr>
   <div class="tablecontent"  id="tablecontent">
@@ -33,35 +25,37 @@
       <thead>
         <tr>
             <!-- <th>Detail URL</th> -->
-            <th>Document Number</th>
-            <th>Title</th>
-            <th>System</th>
-            <th>Document Status</th>
-            <th>Department</th>
-            <th>Requester</th>  
-            <th>Request Date</th>
-            <th>Last Update</th>
-            <th>Attachment</th>
+            <!-- <th>Document Number</th> -->
+            <th>{% trans "Title" %}</th>
+            <th>{% trans "System" %}</th>
+            <th>{% trans "Status" %}</th>
+            <th>{% trans "Department" %}</th>
+            <th>{% trans "Requester" %}</th>  
+            <th>{% trans "Request Date" %}</th>
+            <th>{% trans "Last Update" %}</th>
+            <th>{% trans "Attachment" %}</th>
             <!-- <th>Approver</th> -->
         </tr>
       </thead>
       <tbody>
-        {% for testRequest in all_Request %}
+        {% for data in all_data %}
         <tr>
           <!-- <td><a href= {{ testRequest.detailUrl }} target="_blank"><img src="/static/image/icons8-document-50.png"></a></td> -->
-          <td>{{ testRequest.docNumber }}</td>  
-          <td>{{ testRequest.title }}</td> 
-          <td>{{ testRequest.system }}</td>
-          {%if testRequest.docStatus == "approved" or testRequest.docStatus == "Approved" or testRequest.docStatus == "approve" or testRequest.docStatus == "Approve"%}:
+          <!-- <td>{{ data.docNumber }}</td>   -->
+          <td>{{ data.title }}</td> 
+          <td>{{ data.system }}</td>
+          {%if data.docStatus == "Complete" %}:
+            <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td>
+          {%elif data.docStatus == "Draft" %}:
             <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td>
           {%else%}:
             <td><img src="/static/image/cancel.png" style="width: 20px; height: 20px;"></td>
           {%endif%}
-          <td>{{ testRequest.department }}</td>
-          <td>{{ testRequest.requester }}</td>
-          <td>{{ testRequest.requestDate }}</td>
-          <td>{{ testRequest.lastUpdate }}</td> 
-          {%if testRequest.attachment == True %}:
+          <td>{{ data.department }}</td>
+          <td>{{ data.requesterCode }}</td>
+          <td>{{ data.requestDate }}</td>
+          <td>{{ data.lastUpdate }}</td> 
+          {%if data.attachment == True %}:
             <!-- <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td> -->
             <td>✔</td>
           {% else %}:

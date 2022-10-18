@@ -85,7 +85,6 @@
     padding-top: 5px;
 }
 .card-name4 {
-    /* text-align: right; */
     color: black;
     font-weight: 1000;
     margin-left: 20px;
@@ -99,11 +98,9 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 20px;
-    /* grid-gap: 0px; */
     width: 100%;
     padding: 0px;
     padding-left: 10px;
-    /* padding-right: 30px; */
 }
 
 .chart {
@@ -112,9 +109,7 @@
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #e0e0e0; 
-    /* outline: auto; */
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    /* margin-left: 5px; */
 }
 
 .chart h2 {
@@ -130,9 +125,7 @@
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #e0e0e0; 
-    /* outline: auto; */
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    /* margin-left: 5px; */
 }
 
 .chart2 h2 {

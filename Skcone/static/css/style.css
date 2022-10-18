@@ -44,9 +44,9 @@ margin-right: 0.5em;
 
 }
 
-#right {
-/* flex: 1; */
-}
+/*#right {
+ flex: 1; 
+}*/
 
 #footer {
     width: 50vw;

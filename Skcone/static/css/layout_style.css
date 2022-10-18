@@ -51,16 +51,6 @@ html{
 .modal{
   z-index: 99999 !important;
 }
-/* .loader{
-  position:fixed;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  z-index:9999;
-  background:url(https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif) 50% 50% no-repeat #fff;opacity:.80;
-} */
-
 
 div.mainBody{
   background-color: #e5e5e5;
@@ -86,7 +76,6 @@ body {
   display: grid;
   grid-template-columns: repeat(6, auto);
   align-items: center;
-  /* gap: 0.2rem; */
   margin-right: 20px;
 }
 .menu-icons span{
@@ -118,20 +107,10 @@ body {
 }
 .picture_header{
   margin:3px 7px;
-  /* filter: invert(100%) !important; */
 }
 .signout-logo{
   filter: invert(100%) !important;
 }
-/* .picture_header2{
-  margin: 3px 7px;
-}
-.picture_header3{
-  margin: 3px 3px;
-} */
-/* .picture_header:hover{
-  background-color: #f1f1f1;
-} */
 .picture_header img {
   margin: 2px 7px;
 }
@@ -200,11 +179,9 @@ body {
 }
 .shortly-sidebar {
   width: 60px;
-  /*   transition: width 0.5s; */
 }
 .shortly-sidebar:hover {
   width: 200px;
-  /*   transition: width 0.2s; */
   z-index: 1;
 }
 .shortly-sidebar span {
@@ -374,3 +351,48 @@ div.row{
     width: 640px;
 }
 }
+
+/* change language*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #FF7F50 ;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+ 
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width:105px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #FF7F50;
+} 

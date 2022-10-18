@@ -1,0 +1,124 @@
+{% load i18n %}
+
+<div class="header_left">
+  <!-- <a id="menu" class="hamburger_logo" href="\"> -->
+    <img src="/static/image/layout_img/menu-burger.png" id="menu" alt="hamburger_Logo"
+      class="hamburger-logo" width="35" height="35" style="margin-left: 5px;
+      margin-right: 20px;
+      cursor: pointer;"/>
+    <!-- </a> -->
+  <a class="SKCONE_logo" href="/"><img src="/static/image/login_img/kubota-white.png"
+      alt="SKC_Logo" class="headerleft-logo" width="120" height="25" /></a>
+</div>
+
+
+<div class="menu-icons">
+  <span>{{ request.identity_context_data.username }} </span>
+  <div class="picture_header display-this"><img
+        src="{{ pic_url }}" alt="Picture" class="picture-profile"
+        style="width:35px; height:35px;" /></div>
+  <div class="picture_header display-this"><a id="triangle_head" href="#"><img
+        src="https://img.icons8.com/stickers/344/triangle-stroked.png" class="triangle_header" alt="Picture"
+        style="transform: rotate(180deg);" width="20px;" height="20px;" /></a>
+    <div class="try_head">
+      <a href="">
+        <p>Notification</p>
+      </a>
+      <a href="">
+        <p>Change Laguage</p>
+      </a>
+      <a href="">
+        <p>Exit</p>
+      </a>
+    </div>
+  </div>
+    <!-- <div class="picture_header"><a href="#"><img src="/static/image/layout_img/bell.png" alt="Notification" class="noti-logo" width="35"
+        height="35" /></a></div> -->
+  <!--<div class="picture_header"><a href="#"><img src="/static/image/layout_img/thailand.png" alt="Flag" class="flag-logo" width="35"
+        height="35" /></a></div>-->
+      <!-- <div class="container">
+  
+          {% get_current_language as CURRENT_LANGUAGE %}
+          {% get_available_languages as AVAILABLE_LANGUAGES %}
+          {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+          <div class="languages">
+            <p>{% trans "Language" %}:</p>
+            <ul class="languages">
+              {% for language in languages %}
+                <li>
+                  <a href="/{{ language.code }}/"
+                    {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                    {{ language.name_local }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+
+        </div>--> 
+          
+
+        <!-- <div class="dropdown"> 
+          <button class="dropbtn">
+              Language
+          </button>
+           
+          <div class="dropdown-content">
+              
+              <a href="#">
+                  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200630132502/eflag.jpg"
+                  width="20" height="15"> EN</a>
+              <a href="#">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/%E0%B8%98%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B9%84%E0%B8%97%E0%B8%A2.png"
+                  width="20" height="15"> TH</a>
+          </div>
+          
+        </div> -->
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+          <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="language" onchange="this.form.submit();">
+             {% get_current_language as LANGUAGE_CODE %}
+             {% get_available_languages as LANGUAGES %}
+             {% get_language_info_list for LANGUAGES as languages %}
+             {% for language in languages %}
+               <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                   {{ language.name_local }} ({{ language.code }})
+             {% endfor %}
+          </select>
+        </form>  
+
+        <!-- <div class="language">
+          <dive class="language-selected1">
+              English
+          </dive>
+          <ul>
+              <li><a href="#" class="fr">français</a></li>
+              <li><a href="#" class="th">ภาษาไทย</a></li>
+          </ul>
+        </div> -->
+    
+  <div class="picture_header"><a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="/static/image/layout_img/logout.png" alt="Signout" class="signout-logo" width="35"
+        height="35" style="
+        filter: invert(100%);"/></a></div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="/static/image/attention.png" style="width:30px; height:30px;" alt="Worning">&nbsp;&nbsp;&nbsp;&nbsp;
+        <h3>{% trans "Are you leaving !!!" %}</h3><br>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p style="text-align:left; font-size: 18px;">{% trans "Select 'Yes' below if you are ready to end your current session." %}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "No" %}</button>
+        <a href="{% url 'sign_out' %}"><button type="button" class="btn btn-danger">{% trans "Yes" %}</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+</header>

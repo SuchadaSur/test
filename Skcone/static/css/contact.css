@@ -10,7 +10,6 @@
 }
 
 .card-temp{
-    /* max-width: 500px; */
     max-width: 100%;
     display: flex;
     color: #000;
@@ -37,10 +36,8 @@
 
 .card-temp1 .left-card{
     background: #DA5A34;
-    /* border-radius: 5px; */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    /* border-right: 1px solid #c8645b; */
 }
 
 .card-temp .left-card a{
@@ -91,7 +88,6 @@
         margin-left: 0 !important;
         padding-top: 5px;
         max-width: 1300px !important;
-        /* grid-column-gap: 15px; */
     }
     .card-temp1{
         height: 222px;
