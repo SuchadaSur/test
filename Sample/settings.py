@@ -100,7 +100,7 @@ DATABASES = {
         'HOST':  'p701sssi01-sd02.database.windows.net',
         'PORT':  '',
         'OPTIONS':  {
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': 'ODBC Driver 13 for SQL Server',
         }
     }
 }
